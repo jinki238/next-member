@@ -1,6 +1,6 @@
 "use client"
 
-import { fetchMemberDetailRequest } from "@/features/member/slice";
+import { fetchEmpDetailRequest } from "@/features/emp/slice";
 import { AppDispatch, RootState } from "@/store/store";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -11,14 +11,14 @@ const Detail = () => {
     const { id } = useParams<{id:string}>();
     const dispatch=useDispatch<AppDispatch>();
     const {loading,error,detail}=useSelector((state:RootState)=>({
-        loading:state.member.detailStatus.loading,
-        error:state.member.detailStatus.error,
-        detail:state.member.detail
+        loading:state.emp.detailStatus.loading,
+        error:state.emp.detailStatus.error,
+        detail:state.emp.detail
     }),shallowEqual);
 
     useEffect(()=>{
         if (!id) return; 
-        dispatch(fetchMemberDetailRequest(id));
+        dispatch(fetchEmpDetailRequest(id));
     },[id]);
     return (
         <div>
@@ -26,11 +26,15 @@ const Detail = () => {
             { error && <p>{error}</p> }
             { !loading && 
                 <div>
-                ID : {detail?.id}<br/>
-                PW : {detail?.pw}<br/>
-                ADDR : {detail?.addr}<br/>
-                TEL : {detail?.tel}<br/>
-                <Link href={`/member/${detail?.id}/edit`}>
+                EMPNO : {detail?.empno}<br/>
+                ENAME : {detail?.ename}<br/>
+                JOB : {detail?.job}<br/>
+                MGR : {detail?.mgr}<br/>
+                SAL : {detail?.sal}<br/>
+                HIREDATE : {detail?.hiredate}<br/>
+                COMM : {detail?.comm}<br/>
+                DEPTNO : {detail?.deptno}<br/>
+                <Link href={`/emp/${detail?.empno}/edit`}>
                 <button>수정</button>
                 </Link>
                 <button>삭제</button>

@@ -1,5 +1,6 @@
 import api from "@/lib/axios";
-import { Emp } from "../member/types";
+import { Emp } from "./types";
+
 
 export type ApiResponse<T> = {
   code: number,
@@ -11,18 +12,18 @@ export const fetchEmpAPI = () => {
   return api.get<ApiResponse<Emp[]>>("/emp");
 };
 
-export const fetchEmpDetailAPI = (id: string) => {
-  return api.get<ApiResponse<Emp>>(`/emp/${id}`);
+export const fetchEmpDetailAPI = (empno: number) => {
+  return api.get<ApiResponse<Emp>>(`/emp/${empno}`);
 };
 
 export const registerEmpAPI = (result: Emp) => {
   return api.post<ApiResponse<Emp>>("/emp", result);
 };
 
-export const updateEmpAPI = (id: string, result: Emp) => {
-  return api.put<ApiResponse<Emp>>(`/emp/${id}`, result);
+export const updateEmpAPI = (empno: number, result: Emp) => {
+  return api.put<ApiResponse<Emp>>(`/emp/${empno}`, result);
 };
 
-export const deleteEmpAPI = (id: string) => {
-  return api.delete<ApiResponse<void>>(`/emp/${id}`);
+export const deleteEmpAPI = (empno: number) => {
+  return api.delete<ApiResponse<void>>(`/emp/${empno}`);
 };

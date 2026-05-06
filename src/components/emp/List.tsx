@@ -4,18 +4,18 @@ import { AppDispatch, RootState } from '@/store/store';
 import { useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import Item from './Item';
-import { fetchMemberRequest } from '@/features/member/slice';
+import { fetchEmpRequest } from '@/features/emp/slice';
 
 const List = () => {
     const dispatch=useDispatch<AppDispatch>();
     const {loading,error,list}=useSelector((state:RootState)=>({
-        loading:state.member.listStatus.loading,
-        error:state.member.listStatus.error,
-        list:state.member.list
+        loading:state.emp.listStatus.loading,
+        error:state.emp.listStatus.error,
+        list:state.emp.list
     }),shallowEqual);
     useEffect(()=>{
         console.log("dispatch 실행됨");
-        dispatch(fetchMemberRequest())
+        dispatch(fetchEmpRequest())
     },[dispatch]);
     return (
         <div>
@@ -23,7 +23,7 @@ const List = () => {
             { error && <p>{error}</p> }
             { !loading && 
                 <div>
-                {list?.map(m => (<Item key={m.id} member={m} />) )}
+                {list?.map(em => (<Item key={em.id} emp={em} />) )}
                 </div>
             }
         </div>

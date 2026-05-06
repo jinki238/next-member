@@ -1,6 +1,6 @@
 "use client"
 
-import { fetchMemberDetailRequest, resetStatus, updateMemberRequest } from "@/features/member/slice";
+import { fetchEmpDetailRequest, resetStatus, updateEmpRequest } from "@/features/emp/slice";
 import { AppDispatch, RootState } from "@/store/store";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -11,31 +11,32 @@ const UpdateForm = () => {
     const dispatch=useDispatch<AppDispatch>();
     const router = useRouter();
 
-    const [form, setForm] = useState({ id: "", pw: "", addr: "", tel: "" });
+    const [form, setForm] = useState({ empno: "", ename: "", job: "", mgr: "",
+        sal:"", hiredate:"", comm:"", deptno:""});
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
     const onSubmit = (e: React.SubmitEvent) => {
         e.preventDefault();
-        dispatch(updateMemberRequest({ id, data: form }));
+        dispatch(updateEmpRequest({ empno, data: form }));
     };
 
     const {updateStatus,detail}=useSelector((state:RootState)=>({
-        detail:state.member.detail,
-        updateStatus:state.member.updateStatus,
+        detail:state.emp.detail,
+        updateStatus:state.emp.updateStatus,
     }),shallowEqual);
 
     useEffect(()=>{
         if(updateStatus.success){
             dispatch(resetStatus("updateStatus"));
-            router.push("/member"); 
+            router.push("/emp"); 
         }
     },[updateStatus.success]);
 
     useEffect(()=>{
-        if (!id) return; 
-        dispatch(fetchMemberDetailRequest(id));
+        if (!empno) return; 
+        dispatch(fetchEmpDetailRequest(empno));
     },[id]);
 
     useEffect(() => {
@@ -45,13 +46,21 @@ const UpdateForm = () => {
     return (
         <div>
     <form onSubmit={onSubmit}>
-      ID : <input name="id" placeholder="아이디" onChange={onChange} value={form.id} disabled />
+      <input name="empno" placeholder="사원번호" onChange={onChange} value={form.empno} disabled/>
       <br />
-      PW : <input name="pw" placeholder="비밀번호" onChange={onChange} value={form.pw} />
+      <input name="ename" placeholder="사원이름" onChange={onChange} value={form.ename} />
       <br />
-      ADDR : <input name="addr" placeholder="주소" onChange={onChange} value={form.addr} />
+      <input name="job" placeholder="직책" onChange={onChange} value={form.job} />
       <br />
-      TEL : <input name="tel" placeholder="전화번호" onChange={onChange} value={form.tel} />
+      <input name="mgr" placeholder="상사" onChange={onChange} value={form.mgr} />
+      <br />
+      <input name="sal" placeholder="급여" onChange={onChange} value={form.sal} />
+      <br />
+      <input name="hiredate" placeholder="입사일" onChange={onChange} value={form.hiredate} />
+      <br />
+      <input name="comm" placeholder="상여금" onChange={onChange} value={form.comm} />
+      <br />
+      <input name="deptno" placeholder="부서번호" onChange={onChange} value={form.deptno} />
       <br />
       <button type="submit">수정하기</button>
         { updateStatus.loading && <p>수정 중...</p>}

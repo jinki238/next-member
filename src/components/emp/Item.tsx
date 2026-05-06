@@ -1,22 +1,22 @@
 "use client"
 
-import { deleteMemberRequest, resetStatus } from "@/features/member/slice";
-import { Member } from "@/features/member/types";
+import { deleteEmpRequest, resetStatus } from "@/features/emp/slice";
+import { Emp } from "@/features/emp/types";
 import { AppDispatch, RootState } from "@/store/store";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
-const Item = ({member}:{member:Member}) => {
+const Item = ({emp}:{emp:Emp}) => {
     const dispatch=useDispatch<AppDispatch>();
     const {deleteStatus}=useSelector((state:RootState)=>({
-        deleteStatus:state.member.deleteStatus
+        deleteStatus:state.emp.deleteStatus
     }),shallowEqual);
     const router=useRouter();
     const onDelete = () => {
         if (confirm("정말 삭제할까요?")) {
-            dispatch(deleteMemberRequest(member.id));
+            dispatch(deleteEmpRequest(emp.empno));
         }
     };
 
@@ -24,17 +24,17 @@ const Item = ({member}:{member:Member}) => {
     useEffect(() => {
         if (deleteStatus.success) {
             dispatch(resetStatus("deleteStatus"));
-            router.push("/member");
+            router.push("/emp");
         }
     }, [deleteStatus.success]);
 
     return (
         <div>
-        {member.id} &nbsp;&nbsp;&nbsp;
-        <Link href={`/member/${member.id}`}>
+        {emp.empno} &nbsp;&nbsp;&nbsp; {emp.ename}
+        <Link href={`/emp/${emp.empno}`}>
         <button>상세보기</button>
         </Link>
-        <Link href={`/member/${member.id}/edit`}>
+        <Link href={`/emp/${emp.empno}/edit`}>
         <button>수정</button>
         </Link>
         <button onClick={onDelete}>삭제</button>

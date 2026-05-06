@@ -1,6 +1,6 @@
 "use client"
 
-import { registerMemberRequest, resetStatus } from "@/features/member/slice";
+import { registerEmpRequest, resetStatus } from "@/features/emp/slice";
 import { AppDispatch, RootState } from "@/store/store";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -10,38 +10,48 @@ const RegisterForm = () => {
     const router = useRouter();
     const dispatch=useDispatch<AppDispatch>();
     const {loading,error,success}=useSelector((state:RootState)=>({
-        loading:state.member.createStatus.loading,
-        error:state.member.createStatus.error,
-        success:state.member.createStatus.success,
+        loading:state.emp.createStatus.loading,
+        error:state.emp.createStatus.error,
+        success:state.emp.createStatus.success,
     }),shallowEqual);
 
-    const [form, setForm] = useState({ id: "", pw: "", addr: "", tel: "" });
+    const [form, setForm] = useState({ empno: "", ename: "", job: "", mgr: "",
+        sal:"", hiredate:"", comm:"", deptno:""
+     });
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
     const onSubmit = (e: React.SubmitEvent) => {
         e.preventDefault();
-        dispatch(registerMemberRequest(form));
+        dispatch(registerEmpRequest(form));
     };
 
     useEffect(()=>{
         if(success){
             dispatch(resetStatus("createStatus"));
-             router.push("/member");
+             router.push("/emp");
         }
     },[success]);
 
     return (
         <div>
     <form onSubmit={onSubmit}>
-      <input name="id" placeholder="아이디" onChange={onChange} value={form.id} />
+      <input name="empno" placeholder="사원번호" onChange={onChange} value={form.empno} />
       <br />
-      <input name="pw" placeholder="비밀번호" onChange={onChange} value={form.pw} />
+      <input name="ename" placeholder="사원이름" onChange={onChange} value={form.ename} />
       <br />
-      <input name="addr" placeholder="주소" onChange={onChange} value={form.addr} />
+      <input name="job" placeholder="직책" onChange={onChange} value={form.job} />
       <br />
-      <input name="tel" placeholder="전화번호" onChange={onChange} value={form.tel} />
+      <input name="mgr" placeholder="상사" onChange={onChange} value={form.mgr} />
+      <br />
+      <input name="sal" placeholder="급여" onChange={onChange} value={form.sal} />
+      <br />
+      <input name="hiredate" placeholder="입사일" onChange={onChange} value={form.hiredate} />
+      <br />
+      <input name="comm" placeholder="상여금" onChange={onChange} value={form.comm} />
+      <br />
+      <input name="deptno" placeholder="부서번호" onChange={onChange} value={form.deptno} />
       <br />
       <button type="submit">가입하기</button>
 
