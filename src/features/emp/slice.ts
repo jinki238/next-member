@@ -53,7 +53,7 @@ const empSlice=createSlice({
         },   
         
         // 수정
-        updateEmpRequest:(state, action: PayloadAction<{ id: string; data: Emp }>)=>{
+        updateEmpRequest:(state, action: PayloadAction<{ empno: string; data: Emp }>)=>{
             state.updateStatus={...initialStatus,loading:true};
         },
         updateEmpSuccess:(state)=>{

@@ -15,7 +15,7 @@ const RegisterForm = () => {
         success:state.emp.createStatus.success,
     }),shallowEqual);
 
-    const [form, setForm] = useState({ empno: "", ename: "", job: "", mgr: "",
+    const [form, setForm] = useState({ empno: 0, ename: "", job: "", mgr: "",
         sal:"", hiredate:"", comm:"", deptno:""
      });
 

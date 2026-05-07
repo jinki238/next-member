@@ -29,7 +29,7 @@ function* fetchEmpSaga(){
     yield put(fetchEmpFailure(getErrorMessage(e, "사원 목록 로딩 실패")));
     }
 }
-function* fetchEmpDetailSaga(action: PayloadAction<number>){
+function* fetchEmpDetailSaga(action: PayloadAction<string>){
     try{
     const response:AxiosResponse<ApiResponse<Emp>>=yield call(fetchEmpDetailAPI,action.payload);
     yield put(fetchEmpDetailSuccess(response.data.data));
@@ -45,16 +45,16 @@ function* registerEmpSaga(action: PayloadAction<Emp>){
     yield put(registerEmpFailure(getErrorMessage(e, "사원 등록 실패")));
     }
 }
-function* updateEmpSaga(action: PayloadAction<{ id: number; data: Emp }>){
+function* updateEmpSaga(action: PayloadAction<{ empno: string; data: Emp }>){
     try{
-    const { id, data } = action.payload;
-    yield call(updateEmpAPI,id,data);
+    const { empno, data } = action.payload;
+    yield call(updateEmpAPI,empno,data);
     yield put(updateEmpSuccess());
     }catch(e){
     yield put(updateEmpFailure(getErrorMessage(e, "사원 수정 실패")));
     }
 }
-function* deleteEmpSaga(action: PayloadAction<number>){
+function* deleteEmpSaga(action: PayloadAction<string>){
     try{
     yield call(deleteEmpAPI,action.payload);
     yield put(deleteEmpSuccess());

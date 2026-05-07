@@ -11,7 +11,7 @@ const UpdateForm = () => {
     const dispatch=useDispatch<AppDispatch>();
     const router = useRouter();
 
-    const [form, setForm] = useState({ empno: "", ename: "", job: "", mgr: "",
+    const [form, setForm] = useState({ empno: 0, ename: "", job: "", mgr: "",
         sal:"", hiredate:"", comm:"", deptno:""});
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
