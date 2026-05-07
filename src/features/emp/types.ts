@@ -1,10 +1,10 @@
 export interface Emp{
-    empno:number;
+    empno:string;
     ename:string;
     job:string;
     mgr:string;
     sal:number;
-    hiredate:Date;
+    hiredate:string;
     comm:number;
     deptno:number;
 };

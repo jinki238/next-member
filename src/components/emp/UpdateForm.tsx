@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 const UpdateForm = () => {
-    const { id } = useParams<{id:string}>();
+    const { empno } = useParams<{empno:string}>();
     const dispatch=useDispatch<AppDispatch>();
     const router = useRouter();
 
@@ -37,7 +37,7 @@ const UpdateForm = () => {
     useEffect(()=>{
         if (!empno) return; 
         dispatch(fetchEmpDetailRequest(empno));
-    },[id]);
+    },[empno]);
 
     useEffect(() => {
         if (detail) setForm(detail);

@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 const Detail = () => {
-    const { id } = useParams<{id:string}>();
+    const { empno } = useParams<{empno:string}>();
     const dispatch=useDispatch<AppDispatch>();
     const {loading,error,detail}=useSelector((state:RootState)=>({
         loading:state.emp.detailStatus.loading,
@@ -17,9 +17,9 @@ const Detail = () => {
     }),shallowEqual);
 
     useEffect(()=>{
-        if (!id) return; 
-        dispatch(fetchEmpDetailRequest(id));
-    },[id]);
+        if (!empno) return; 
+        dispatch(fetchEmpDetailRequest(empno));
+    },[empno]);
     return (
         <div>
             { loading && <p>로딩중...</p> }
