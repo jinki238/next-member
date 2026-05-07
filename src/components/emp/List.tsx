@@ -23,7 +23,7 @@ const List = () => {
             { error && <p>{error}</p> }
             { !loading && 
                 <div>
-                {list?.map(em => (<Item key={em.id} emp={em} />) )}
+                {list?.map(em => (<Item key={em.empno} emp={em} />) )}
                 </div>
             }
         </div>
