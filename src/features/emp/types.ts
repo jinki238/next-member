@@ -23,3 +23,8 @@ export interface EmpState{
     updateStatus:Status;
     deleteStatus:Status;
 };
+export type ApiResponse<T> = {
+  code: number,
+  message: string,
+  data: T
+};

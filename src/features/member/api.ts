@@ -1,11 +1,6 @@
 import api from "@/lib/axios";
-import { Member } from "./types";
+import { ApiResponse, Member } from "./types";
 
-export type ApiResponse<T> = {
-  code: number,
-  message: string,
-  data: T
-};
 
 export const fetchMemberAPI = () => {
   return api.get<ApiResponse<Member[]>>("/member");

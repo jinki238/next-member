@@ -1,12 +1,6 @@
 import api from "@/lib/axios";
-import { Emp } from "./types";
+import { ApiResponse, Emp } from "./types";
 
-
-export type ApiResponse<T> = {
-  code: number,
-  message: string,
-  data: T
-};
 
 export const fetchEmpAPI = () => {
   return api.get<ApiResponse<Emp[]>>("/emp");

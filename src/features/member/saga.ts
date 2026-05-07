@@ -4,10 +4,10 @@ import { deleteMemberFailure, deleteMemberRequest, deleteMemberSuccess,
      fetchMemberFailure, fetchMemberRequest, fetchMemberSuccess, 
      registerMemberFailure, registerMemberRequest, registerMemberSuccess, 
      updateMemberFailure, updateMemberRequest, updateMemberSuccess } from "./slice";
-import { ApiResponse, deleteMemberAPI, fetchMemberAPI, fetchMemberDetailAPI, registerMemberAPI, updateMemberAPI } from "./api";
+import { deleteMemberAPI, fetchMemberAPI, fetchMemberDetailAPI, registerMemberAPI, updateMemberAPI } from "./api";
 import axios, { AxiosResponse } from "axios";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { Member } from "./types";
+import { ApiResponse, Member } from "./types";
 
 // 공통 에러 처리
 function getErrorMessage(e: unknown, defaultMsg: string) {
