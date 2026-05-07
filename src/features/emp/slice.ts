@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Member, MemberState, Status } from "./types";
+import { Emp, EmpState, Status } from "./types";
 
 const initialStatus:Status={ loading:false,error:null,success:false };
 
-const initialState:MemberState={
+const initialState:EmpState={
     list:[],detail:null,
 
     listStatus:{...initialStatus},
@@ -12,69 +12,69 @@ const initialState:MemberState={
     updateStatus:{...initialStatus},
     deleteStatus:{...initialStatus},
 };
-const memberSlice=createSlice({
-    name:"member",
+const empSlice=createSlice({
+    name:"emp",
     initialState,
     reducers:{
         // 전체조회
-        fetchMemberRequest:(state)=>{
+        fetchEmpRequest:(state)=>{
             state.listStatus={...initialStatus,loading:true};
         },
-        fetchMemberSuccess:(state,action:PayloadAction<Member[]>)=>{
+        fetchEmpSuccess:(state,action:PayloadAction<Emp[]>)=>{
             state.listStatus={...initialStatus,loading:false};
             state.list=action.payload;
         },
-        fetchMemberFailure:(state,action:PayloadAction<string>)=>{
+        fetchEmpFailure:(state,action:PayloadAction<string>)=>{
             state.listStatus={...initialStatus,loading:false,error:action.payload};
         },
 
         // 상세조회
-        fetchMemberDetailRequest:(state,action:PayloadAction<string>)=>{
+        fetchEmpDetailRequest:(state,action:PayloadAction<string>)=>{
             state.detailStatus={...initialStatus,loading:true};
             state.detail = null;
         },
-        fetchMemberDetailSuccess:(state,action:PayloadAction<Member>)=>{
+        fetchEmpDetailSuccess:(state,action:PayloadAction<Emp>)=>{
             state.detailStatus={...initialStatus,loading:false};
             state.detail=action.payload;
         },
-        fetchMemberDetailFailure:(state,action:PayloadAction<string>)=>{
+        fetchEmpDetailFailure:(state,action:PayloadAction<string>)=>{
             state.detailStatus={...initialStatus,loading:false,error:action.payload};
         },
 
         // 등록
-        registerMemberRequest:(state,action:PayloadAction<Member>)=>{
+        registerEmpRequest:(state,action:PayloadAction<Emp>)=>{
             state.createStatus={...initialStatus,loading:true};
         },
-        registerMemberSuccess:(state)=>{
+        registerEmpSuccess:(state)=>{
             state.createStatus={...initialStatus,loading:false,success:true};
         },
-        registerMemberFailure:(state,action:PayloadAction<string>)=>{
+        registerEmpFailure:(state,action:PayloadAction<string>)=>{
             state.createStatus={...initialStatus,loading:false,error:action.payload};
         },   
         
         // 수정
-        updateMemberRequest:(state, action: PayloadAction<{ id: string; data: Member }>)=>{
+        updateEmpRequest:(state, action: PayloadAction<{ id: string; data: Emp }>)=>{
             state.updateStatus={...initialStatus,loading:true};
         },
-        updateMemberSuccess:(state)=>{
+        updateEmpSuccess:(state)=>{
             state.updateStatus={...initialStatus,loading:false,success: true};
         },
-        updateMemberFailure:(state,action:PayloadAction<string>)=>{
+        updateEmpFailure:(state,action:PayloadAction<string>)=>{
             state.updateStatus={...initialStatus,loading:false,error:action.payload};
         }, 
         
         // 삭제
-        deleteMemberRequest:(state,action:PayloadAction<string>)=>{
+        deleteEmpRequest:(state,action:PayloadAction<string>)=>{
             state.deleteStatus={...initialStatus,loading:true};
         },
-        deleteMemberSuccess:(state)=>{
+        deleteEmpSuccess:(state)=>{
             state.deleteStatus={...initialStatus,loading:false,success: true};
         },
-        deleteMemberFailure:(state,action:PayloadAction<string>)=>{
+        deleteEmpFailure:(state,action:PayloadAction<string>)=>{
             state.deleteStatus={...initialStatus,loading:false,error:action.payload};
         }, 
 
-        resetStatus: (state, action: PayloadAction<keyof MemberState>) => {
+        resetStatus: (state, action: PayloadAction<keyof EmpState>) => {
             const key = action.payload;
 
             if (key.endsWith("Status")) {
@@ -85,11 +85,11 @@ const memberSlice=createSlice({
 });
 
 export const {
-    fetchMemberRequest,fetchMemberSuccess,fetchMemberFailure,
-    fetchMemberDetailRequest,fetchMemberDetailSuccess,fetchMemberDetailFailure,
-    registerMemberRequest,registerMemberSuccess,registerMemberFailure,
-    updateMemberRequest,updateMemberSuccess,updateMemberFailure,
-    deleteMemberRequest,deleteMemberSuccess,deleteMemberFailure,
+    fetchEmpRequest,fetchEmpSuccess,fetchEmpFailure,
+    fetchEmpDetailRequest,fetchEmpDetailSuccess,fetchEmpDetailFailure,
+    registerEmpRequest,registerEmpSuccess,registerEmpFailure,
+    updateEmpRequest,updateEmpSuccess,updateEmpFailure,
+    deleteEmpRequest,deleteEmpSuccess,deleteEmpFailure,
     resetStatus
-}=memberSlice.actions;
-export default memberSlice.reducer;
+}=empSlice.actions;
+export default empSlice.reducer;

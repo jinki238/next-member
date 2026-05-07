@@ -1,13 +1,13 @@
 import { all, call, put, takeLatest } from "redux-saga/effects";
-import { deleteMemberFailure, deleteMemberRequest, deleteMemberSuccess, 
-    fetchMemberDetailFailure, fetchMemberDetailRequest, fetchMemberDetailSuccess,
-     fetchMemberFailure, fetchMemberRequest, fetchMemberSuccess, 
-     registerMemberFailure, registerMemberRequest, registerMemberSuccess, 
-     updateMemberFailure, updateMemberRequest, updateMemberSuccess } from "./slice";
-import { ApiResponse, deleteMemberAPI, fetchMemberAPI, fetchMemberDetailAPI, registerMemberAPI, updateMemberAPI } from "./api";
+
+
 import axios, { AxiosResponse } from "axios";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { Member } from "./types";
+import { ApiResponse } from "../member/types";
+import { Emp } from "./types";
+import { deleteEmpAPI, fetchEmpAPI, fetchEmpDetailAPI, registerEmpAPI, updateEmpAPI } from "./api";
+import { deleteEmpFailure, deleteEmpRequest, deleteEmpSuccess, fetchEmpDetailFailure, fetchEmpDetailRequest, fetchEmpDetailSuccess, fetchEmpDetailSuccess, fetchEmpFailure, fetchEmpRequest, fetchEmpSuccess, registerEmpFailure, registerEmpFailure, registerEmpRequest, registerEmpSuccess, registerEmpSuccess, updateEmpFailure, updateEmpFailure, updateEmpRequest, updateEmpSuccess, updateEmpSuccess } from "./slice";
+
 
 // 공통 에러 처리
 function getErrorMessage(e: unknown, defaultMsg: string) {
@@ -16,61 +16,61 @@ function getErrorMessage(e: unknown, defaultMsg: string) {
 
   return (e as any)?.message || defaultMsg;
 }
-function* fetchMemberSaga(){
+function* fetchEmpSaga(){
     console.log("🔥 saga 진입");
     try{
         console.log("📡 API 호출 직전");
-    const response:AxiosResponse<ApiResponse<Member[]>>=yield call(fetchMemberAPI);
+    const response:AxiosResponse<ApiResponse<Emp[]>>=yield call(fetchEmpAPI);
     console.log("✅ API 응답:", response);
-    yield put(fetchMemberSuccess(response.data.data));
+    yield put(fetchEmpSuccess(response.data.data));
     console.log("📦 store에 넣기:", response.data.data);
     }catch(e){
-    yield put(fetchMemberFailure(getErrorMessage(e, "회원 목록 로딩 실패")));
+    yield put(fetchEmpFailure(getErrorMessage(e, "사원 목록 로딩 실패")));
     }
 }
-function* fetchMemberDetailSaga(action: PayloadAction<string>){
+function* fetchEmpDetailSaga(action: PayloadAction<string>){
     try{
-    const response:AxiosResponse<ApiResponse<Member>>=yield call(fetchMemberDetailAPI,action.payload);
-    yield put(fetchMemberDetailSuccess(response.data.data));
+    const response:AxiosResponse<ApiResponse<Emp>>=yield call(fetchEmpDetailAPI,action.payload);
+    yield put(fetchEmpDetailSuccess(response.data.data));
     }catch(e){
-    yield put(fetchMemberDetailFailure(getErrorMessage(e, "회원 상세 로딩 실패")));
+    yield put(fetchEmpDetailFailure(getErrorMessage(e, "사원 상세 로딩 실패")));
     }
 }
-function* registerMemberSaga(action: PayloadAction<Member>){
+function* registerEmpSaga(action: PayloadAction<Emp>){
     try{
-    yield call(registerMemberAPI,action.payload);
-    yield put(registerMemberSuccess());
+    yield call(registerEmpAPI,action.payload);
+    yield put(registerEmpSuccess());
     }catch(e){
-    yield put(registerMemberFailure(getErrorMessage(e, "회원 가입 실패")));
+    yield put(registerEmpFailure(getErrorMessage(e, "사원 등록 실패")));
     }
 }
-function* updateMemberSaga(action: PayloadAction<{ id: string; data: Member }>){
+function* updateEmpSaga(action: PayloadAction<{ id: string; data: Emp }>){
     try{
     const { id, data } = action.payload;
-    yield call(updateMemberAPI,id,data);
-    yield put(updateMemberSuccess());
+    yield call(updateEmpAPI,id,data);
+    yield put(updateEmpSuccess());
     }catch(e){
-    yield put(updateMemberFailure(getErrorMessage(e, "회원 수정 실패")));
+    yield put(updateEmpFailure(getErrorMessage(e, "사원 수정 실패")));
     }
 }
-function* deleteMemberSaga(action: PayloadAction<string>){
+function* deleteEmpSaga(action: PayloadAction<string>){
     try{
-    yield call(deleteMemberAPI,action.payload);
-    yield put(deleteMemberSuccess());
+    yield call(deleteEmpAPI,action.payload);
+    yield put(deleteEmpSuccess());
 
     // ⭐ 삭제 후 바로 목록 다시 조회
-    yield put(fetchMemberRequest());
+    yield put(fetchEmpRequest());
 
     }catch(e){
-    yield put(deleteMemberFailure(getErrorMessage(e, "회원 삭제 실패")));
+    yield put(deleteEmpFailure(getErrorMessage(e, "사원 삭제 실패")));
     }
 }
-export function* watchMemberSaga(){
+export function* watchEmpSaga(){
     yield all( [
-      takeLatest( fetchMemberRequest.type, fetchMemberSaga),
-      takeLatest( fetchMemberDetailRequest.type, fetchMemberDetailSaga),
-      takeLatest( registerMemberRequest.type, registerMemberSaga),
-      takeLatest( updateMemberRequest.type, updateMemberSaga),
-      takeLatest( deleteMemberRequest.type, deleteMemberSaga),
+      takeLatest( fetchEmpRequest.type, fetchEmpSaga),
+      takeLatest( fetchEmpDetailRequest.type, fetchEmpDetailSaga),
+      takeLatest( registerEmpRequest.type, registerEmpSaga),
+      takeLatest( updateEmpRequest.type, updateEmpSaga),
+      takeLatest( deleteEmpRequest.type, deleteEmpSaga),
     ]);
 }
