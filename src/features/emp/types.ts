@@ -1,12 +1,12 @@
 export interface Emp{
-    empno:string;
+    empno:number;
     ename:string;
     job:string;
     mgr:string;
-    sal:string;
+    sal:number;
     hiredate:string;
-    comm:string;
-    deptno:string;
+    comm:number;
+    deptno:number;
 };
 export interface Status{
     loading:boolean;
