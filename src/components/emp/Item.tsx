@@ -82,6 +82,7 @@ const Item = ({ emp }: { emp: Emp }) => {
                     <Link href={`/emp/${emp.empno}`}>
                         <button className={styles.btnDetail}>상세보기</button>
                     </Link>
+                    <button className={styles.btnDetail} onClick={onDelete}>삭제</button>
                 </div>
                 {/* 점 세개 아이콘 (삭제 등을 연결하고 싶을 때 사용) */}
                 <span className={styles.moreIcon} onClick={onDelete}>⋮</span>

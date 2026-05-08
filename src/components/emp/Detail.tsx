@@ -1,6 +1,6 @@
 "use client"
 
-import { fetchEmpDetailRequest } from "@/features/emp/slice";
+import { deleteEmpRequest, fetchEmpDetailRequest } from "@/features/emp/slice";
 import { AppDispatch, RootState } from "@/store/store";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -15,7 +15,6 @@ const Detail = () => {
         error:state.emp.detailStatus.error,
         detail:state.emp.detail
     }),shallowEqual);
-
     useEffect(()=>{
         if (!empno) return; 
         dispatch(fetchEmpDetailRequest(empno));
@@ -37,7 +36,6 @@ const Detail = () => {
                 <Link href={`/emp/${detail?.empno}/edit`}>
                 <button>수정</button>
                 </Link>
-                <button>삭제</button>
                 </div>
             }           
         </div>

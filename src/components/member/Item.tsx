@@ -83,6 +83,7 @@ const Item = ({member}:{member:Member}) => {
                     <Link href={`/member/${member.id}`}>
                         <button className={styles.btnDetail}>상세보기</button>
                     </Link>
+                    <button className={styles.btnDetail} onClick={onDelete}>삭제</button>
                 </div>
                 {/* 점 세개는 absolute로 맨 오른쪽에 배치될 예정 */}
                 <span className={styles.moreIcon} >⋮</span>

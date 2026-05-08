@@ -38,7 +38,7 @@ const List = () => {
 
             {/* 표 헤더 */}
             <div className={styles.listHeader}>
-                <div>사원정보</div>
+                <div>사원번호(사원명)</div>
                 <div>관리</div>
             </div>
 

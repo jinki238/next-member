@@ -33,7 +33,6 @@ const Detail = () => {
                 <Link href={`/member/${detail?.id}/edit`}>
                 <button>수정</button>
                 </Link>
-                <button>삭제</button>
                 </div>
             }           
         </div>
