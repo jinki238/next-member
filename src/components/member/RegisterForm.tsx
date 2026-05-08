@@ -5,49 +5,87 @@ import { AppDispatch, RootState } from "@/store/store";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import styles from './RegisterForm.module.css'; // ⭐ CSS Module 연결
 
 const RegisterForm = () => {
     const router = useRouter();
-    const dispatch=useDispatch<AppDispatch>();
-    const {loading,error,success}=useSelector((state:RootState)=>({
-        loading:state.member.createStatus.loading,
-        error:state.member.createStatus.error,
-        success:state.member.createStatus.success,
-    }),shallowEqual);
+    const dispatch = useDispatch<AppDispatch>();
+    const { loading, error, success } = useSelector((state: RootState) => ({
+        loading: state.member.createStatus.loading,
+        error: state.member.createStatus.error,
+        success: state.member.createStatus.success,
+    }), shallowEqual);
 
+    // 폼 상태 (비밀번호 확인 필드 추가됨)
     const [form, setForm] = useState({ id: "", pw: "", addr: "", tel: "" });
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
-    const onSubmit = (e: React.SubmitEvent) => {
+
+    const onSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         dispatch(registerMemberRequest(form));
     };
 
-    useEffect(()=>{
-        if(success){
+    useEffect(() => {
+        if (success) {
             dispatch(resetStatus("createStatus"));
-             router.push("/member");
+            router.push("/member");
         }
-    },[success]);
+    }, [success, dispatch, router]);
 
     return (
-        <div>
-    <form onSubmit={onSubmit}>
-      <input name="id" placeholder="아이디" onChange={onChange} value={form.id} />
-      <br />
-      <input name="pw" placeholder="비밀번호" onChange={onChange} value={form.pw} />
-      <br />
-      <input name="addr" placeholder="주소" onChange={onChange} value={form.addr} />
-      <br />
-      <input name="tel" placeholder="전화번호" onChange={onChange} value={form.tel} />
-      <br />
-      <button type="submit">가입하기</button>
+        <div className={styles.formCard}>
+            <h2 className={styles.formTitle}>회원가입</h2>
 
-        { loading && <p>등록 중...</p>}
-        { error && <p>{error}</p>}
-    </form>
+            <form onSubmit={onSubmit} className={styles.formBody}>
+                {/* 아이디 */}
+                <div className={styles.inputGroup}>
+                    <label className={styles.label}>아이디 <span className={styles.required}>*</span></label>
+                    <div className={styles.inputWithButton}>
+                        <input name="id" placeholder="아이디를 입력해주세요" onChange={onChange} value={form.id} className={styles.mainInput} />
+                        <button type="button" className={styles.subButton}>중복확인</button>
+                    </div>
+                </div>
+
+                {/* 비밀번호 */}
+                <div className={styles.inputGroup}>
+                    <label className={styles.label}>비밀번호</label>
+                    <input name="pw" type="password" placeholder="비밀번호를 입력해주세요" onChange={onChange} value={form.pw} className={styles.mainInput} />
+                </div>
+
+                {/* 비밀번호 확인 (디자인용 추가) */}
+                <div className={styles.inputGroup}>
+                    <label className={styles.label}>비밀번호 확인</label>
+                    <input type="password" placeholder="비밀번호를 한 번 더 입력해주세요" className={styles.mainInput} />
+                </div>
+
+                {/* 전화번호 */}
+                <div className={styles.inputGroup}>
+                    <label className={styles.label}>전화번호</label>
+                    <input name="tel" placeholder="-없이 입력해주세요" onChange={onChange} value={form.tel} className={styles.mainInput} />
+                </div>
+
+                {/* 주소 */}
+                <div className={styles.inputGroup}>
+                    <label className={styles.label}>주소</label>
+                    <div className={styles.inputWithButton}>
+                        <input name="addr" placeholder="주소를 입력해주세요" onChange={onChange} value={form.addr} className={styles.mainInput} />
+                        <button type="button" className={styles.subButton}>주소검색</button>
+                    </div>
+                    <input placeholder="상세주소를 입력해주세요" className={`${styles.mainInput} ${styles.addressDetail}`} />
+                </div>
+
+                {/* 하단 버튼 및 상태 메시지 */}
+                <div className={styles.submitArea}>
+                    { loading && <span className={styles.loadingText}>등록 중...</span>}
+                    { error && <span className={styles.errorText}>{error}</span>}
+                    <button type="submit" className={styles.mainButton} disabled={loading}>
+                        가입하기
+                    </button>
+                </div>
+            </form>
         </div>
     );
 };

@@ -52,13 +52,13 @@ const UpdateForm = () => {
       <br />
       <input name="job" placeholder="직책" onChange={onChange} value={form.job} />
       <br />
-      <input name="mgr" placeholder="상사" onChange={onChange} value={form.mgr} />
+      <input name="mgr" placeholder="상사" onChange={onChange} value={form.mgr ?? ""} />
       <br />
       <input name="sal" placeholder="급여" onChange={onChange} value={form.sal} />
       <br />
       <input name="hiredate" placeholder="입사일" onChange={onChange} value={form.hiredate} />
       <br />
-      <input name="comm" placeholder="상여금" onChange={onChange} value={form.comm} />
+      <input name="comm" placeholder="상여금" onChange={onChange} value={form.comm ?? ""} />
       <br />
       <input name="deptno" placeholder="부서번호" onChange={onChange} value={form.deptno} />
       <br />

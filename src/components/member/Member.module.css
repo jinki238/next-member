@@ -1,0 +1,192 @@
+/* 1. 전체 카드 컨테이너 */
+.fullContainer {
+    width: 100%;
+    min-height: 100vh; /* 화면 높이를 꽉 채우고 싶을 때 */
+    background-color: #ffffff;
+    padding: 40px; /* 양옆 여백은 적절히 조절 */
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 24px;
+    color: #111;
+}
+
+/* 2. 검색창 영역 */
+.searchWrapper {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.inputGroup {
+    position: relative;
+    flex: 1;
+}
+
+.inputGroup::before {
+    content: "🔍";
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #999;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 15px;
+    outline: none;
+}
+
+.searchButton {
+    background-color: #2563eb;
+    color: white;
+    padding: 0 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* 3. 표 헤더 (아이디 / 관리) */
+.listHeader {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #f3f4f6;
+    padding: 14px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 700;
+    color: #4b5563;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+/* 1. 리스트 한 줄 레이아웃 */
+.itemRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 반반씩 영역 나눔 */
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #f9fafb;
+    width: 100%;
+}
+/* ... 기존 스타일 유지 */
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* ⭐ 아이콘과 글자를 구역 내 중앙으로 */
+    gap: 12px;
+    /* padding-left 제거 (중앙 정렬을 방해함) */
+}
+
+/* 동그란 아이콘 컨테이너 */
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: #f8f9fa; /* 연한 회색 배경 (아이콘 색을 돋보이게) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eee; /* 연한 테두리 (선택) */
+}
+
+/* 오른쪽 관리 버튼 영역 */
+.actionArea {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative; /* moreIcon의 기준점이 됩니다 */
+    justify-content: center;
+}
+/* 아이디 텍스트 색상 명확하게 */
+.userId {
+    font-size: 16px;
+    color: #111;
+    font-weight: 500;
+}
+
+/* 상세 버튼 스타일 */
+.btnAction {
+    padding: 6px 18px;
+    border: 1px solid #e5e7eb;
+    background-color: white;
+    color: #3b82f6;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.moreMenu {
+    position: absolute;      /* ⭐ absolute로 공중에 띄움 */
+    right: 20px;             /* ⭐ 오른쪽 끝에서 20px 띄워서 배치 */
+    color: #9ca3af;
+    font-size: 20px;         /* 아이콘 크기 살짝 키움 */
+    cursor: pointer;
+    padding: 8px;            /* 클릭 영역 확보 */
+    margin: 0;               /* 기존의 margin-left는 필요 없음 */
+}
+.moreMenu:hover {
+    color: #4b5563;
+}
+.btnDetail {
+    padding: 8px 24px;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    color: #3b82f6;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btnDetail:hover {
+    background-color: #eff6ff;
+    border-color: #3b82f6;
+}
+/* 버튼만 감싸는 박스 */
+.btnWrapper {
+    display: flex;
+    justify-content: center;
+    /* 다른 요소가 공간을 차지하지 않도록 확보 */
+    flex: 1; 
+}
+
+/* 점 세 개 아이콘 (오른쪽 끝으로 강제 격리) */
+.moreIcon {
+    position: absolute;  /* ⭐ 공중에 띄워서 흐름을 무시함 */
+    right: 20px;         /* ⭐ 맨 오른쪽 끝에서 20px만 띄움 */
+    top: 50%;            /* 수직 중앙 정렬 시작 */
+    transform: translateY(-50%); /* 수직 중앙 정렬 마침 */
+    
+    font-size: 20px;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 10px;       /* 클릭 영역 확보 */
+    z-index: 10;         /* 다른 요소에 가려지지 않게 함 */
+}
+
+.moreIcon:hover {
+    color: #374151;
+}
+
+/* 상세보기 버튼 디자인 */
+.btnDetail {
+    padding: 8px 24px;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    color: #3b82f6;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
