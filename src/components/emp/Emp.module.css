@@ -152,3 +152,157 @@
 .moreIcon:hover {
     color: #374151;
 }
+/* =========================
+   상세페이지
+========================= */
+
+.detailContainer{
+    padding: 32px;
+}
+
+.detailCard{
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 24px;
+
+    padding: 40px;
+
+    max-width: 1000px;
+
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.detailProfile{
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 40px;
+}
+
+.detailAvatar{
+    width: 80px;
+    height: 80px;
+
+    border-radius: 9999px;
+
+    background: #f9fafb;
+
+    border: 1px solid #e5e7eb;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.detailName{
+    font-size: 28px;
+
+    font-weight: 700;
+
+    margin-bottom: 6px;
+}
+
+.detailSubText{
+    color: #9ca3af;
+
+    font-size: 14px;
+}
+
+.detailInfoGroup{
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 24px;
+}
+
+.detailItem{
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.detailLabel{
+    font-size: 14px;
+
+    color: #9ca3af;
+
+    font-weight: 600;
+}
+
+.detailValue{
+    border: 1px solid #e5e7eb;
+
+    background: #f9fafb;
+
+    border-radius: 14px;
+
+    padding: 16px 20px;
+
+    font-size: 16px;
+}
+
+.detailBtnArea{
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    margin-top: 40px;
+}
+
+.detailPrimaryBtn{
+    border: none;
+
+    background: #2563eb;
+
+    color: white;
+
+    padding: 14px 24px;
+
+    border-radius: 14px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.detailPrimaryBtn:hover{
+    background: #1d4ed8;
+}
+
+.detailSecondaryBtn{
+    border: 1px solid #d1d5db;
+
+    background: white;
+
+    padding: 14px 24px;
+
+    border-radius: 14px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.detailSecondaryBtn:hover{
+    background: #f3f4f6;
+}
