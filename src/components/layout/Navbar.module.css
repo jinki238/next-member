@@ -2,7 +2,7 @@
 .sidebar {
   width: 250px;           /* 사이드바 너비 */
   height: 100vh;          /* 화면 높이 전체 */
-  background-color: #e0e0e0; /* 이미지의 연회색 */
+  background-color: #edf6ff; 
   position: fixed;        /* 왼쪽 고정 */
   left: 0;
   top: 0;
@@ -23,7 +23,7 @@
 }
 
 .navItem:hover {
-  background-color: #d0d0d0; /* 마우스 올렸을 때 색상 */
+  background-color: #2563eb; /* 마우스 올렸을 때 색상 */
 }
 
 .icon {

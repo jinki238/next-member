@@ -58,7 +58,7 @@
 .listHeader {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: #f3f4f6;
+    background-color: #edf6ff;
     padding: 14px;
     border-radius: 12px;
     text-align: center;
