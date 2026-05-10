@@ -9,7 +9,7 @@ const Homepage = () => {
       bg: "#f0f9ff", // 연한 하늘색
       borderColor: "#e0f2fe",
       description: "UI 컴포넌트 기반의 JavaScript 라이브러리",
-      details: ["컴포넌트 기반 UI 개발", "가상 DOM으로 빠른 렌더링", "재사용 가능한 컴포넌트 주소"],
+      details: ["컴포넌트 기반 UI 개발", "바뀐 부분만 빠르게 렌더링", "재사용 가능한 컴포넌트 주소"],
       roadmap: ["JSX 문법 이해", "컴포넌트와 Props", "State와 이벤트 처리", "컴포넌트 생명주기"]
     },
     {
@@ -19,8 +19,8 @@ const Homepage = () => {
       bg: "#f3f4f6", // 연한 회색
       borderColor: "#e5e7eb",
       description: "React 기반의 풀스택 프레임워크",
-      details: ["서버 사이드 렌더링(SSR)", "정적 사이트 생성(SSG)", "API 라우트 및 파일 기반 라우팅"],
-      roadmap: ["페이지 및 라우팅", "SSR / SSG", "API Routes", "배포하기"]
+      details: ["서버 사이드 렌더링(SSR)", "검색 엔진 최적화", "API 라우트 및 파일 기반 라우팅"],
+      roadmap: ["페이지 및 라우팅", "SSR", "API Routes", "배포하기"]
     },
     {
       title: "Redux",
@@ -30,7 +30,7 @@ const Homepage = () => {
       borderColor: "#ede9fe",
       description: "예측 가능한 상태 관리를 위한 라이브러리",
       details: ["중앙 집중식 상태 관리", "예측 가능한 상태 변경(Reducer)", "상태 변화에 따른 UI 업데이트"],
-      roadmap: ["Store, Action, Reducer", "상태 조회 및 변경", "React-Redux 연동", "미들웨어 (Thunk)"]
+      roadmap: ["Store, Action, Reducer", "상태 조회 및 변경", "React-Redux 연동", "미들웨어 (Saga)"]
     },
   ];
 
