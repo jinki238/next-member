@@ -2,7 +2,9 @@
 .sidebar {
   width: 250px;           /* 사이드바 너비 */
   height: 100vh;          /* 화면 높이 전체 */
-  background-color: #edf6ff; 
+  background-color:
+   /* white; */
+   #edf6ff; 
   position: fixed;        /* 왼쪽 고정 */
   left: 0;
   top: 0;
@@ -24,6 +26,7 @@
 
 .navItem:hover {
   background-color: #2563eb; /* 마우스 올렸을 때 색상 */
+  color: white;             /* 글자색 변경 */
 }
 
 .icon {
