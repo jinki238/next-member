@@ -2,8 +2,7 @@ import RegisterForm from "@/components/member/RegisterForm";
 
 const RegisterPage = () => {
     return (
-        <div>
-            
+        <div>  
             <RegisterForm />
         </div>
     );
