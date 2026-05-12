@@ -334,3 +334,42 @@
 .detailSecondaryBtn:hover {
     background: #f3f4f6;
 }
+/* =========================
+   수정페이지 input 디자인
+========================= */
+
+.detailInput {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    border-radius: 14px;
+    padding: 16px 20px;
+    font-size: 16px;
+    transition: 0.2s;
+    outline: none;
+}
+
+.detailInput:focus {
+    border-color: #2563eb;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.detailInputDisabled {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    background: #f3f4f6;
+    border-radius: 14px;
+    padding: 16px 20px;
+    font-size: 16px;
+    color: #6b7280;
+    outline: none;
+}
+
+.detailError {
+    margin-top: 20px;
+    text-align: center;
+    color: #ef4444;
+    font-size: 14px;
+    font-weight: 500;
+}

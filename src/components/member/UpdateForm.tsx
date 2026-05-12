@@ -62,7 +62,7 @@ const UpdateForm = () => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const onSubmit = (e: React.FormEvent) => {
+    const onSubmit = (e: React.SubmitEvent) => {
         e.preventDefault();
         if (id) {
             dispatch(updateMemberRequest({ id, data: form }));

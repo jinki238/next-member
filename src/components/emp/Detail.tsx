@@ -108,7 +108,7 @@ const Detail = () => {
                         </div>
 
                         <div className={styles.detailItem}>
-                            <p className={styles.detailLabel}>사원명</p>
+                            <p className={styles.detailLabel}>사원이름</p>
 
                             <div className={styles.detailValue}>
                                 {detail.ename}
@@ -116,7 +116,7 @@ const Detail = () => {
                         </div>
 
                         <div className={styles.detailItem}>
-                            <p className={styles.detailLabel}>직무</p>
+                            <p className={styles.detailLabel}>직책</p>
 
                             <div className={styles.detailValue}>
                                 {detail.job}
@@ -124,7 +124,7 @@ const Detail = () => {
                         </div>
 
                         <div className={styles.detailItem}>
-                            <p className={styles.detailLabel}>매니저번호</p>
+                            <p className={styles.detailLabel}>상사번호</p>
 
                             <div className={styles.detailValue}>
                                 {detail.mgr}
@@ -140,18 +140,18 @@ const Detail = () => {
                         </div>
 
                         <div className={styles.detailItem}>
-                            <p className={styles.detailLabel}>입사일</p>
+                            <p className={styles.detailLabel}>상여금</p>
 
                             <div className={styles.detailValue}>
-                                {detail.hiredate}
+                                {detail.comm}
                             </div>
                         </div>
 
                         <div className={styles.detailItem}>
-                            <p className={styles.detailLabel}>커미션</p>
+                            <p className={styles.detailLabel}>입사일</p>
 
                             <div className={styles.detailValue}>
-                                {detail.comm}
+                                {detail.hiredate}
                             </div>
                         </div>
 

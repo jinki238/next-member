@@ -17,13 +17,9 @@ function getErrorMessage(e: unknown, defaultMsg: string) {
   return (e as any)?.message || defaultMsg;
 }
 function* fetchMemberSaga(){
-    console.log("🔥 saga 진입");
     try{
-        console.log("📡 API 호출 직전");
     const response:AxiosResponse<ApiResponse<Member[]>>=yield call(fetchMemberAPI);
-    console.log("📦 store에 넣기:", response.data.data);
     yield put(fetchMemberSuccess(response.data.data));
-    console.log("✅ API 응답:", response);
     }catch(e){
     yield put(fetchMemberFailure(getErrorMessage(e, "회원 목록 로딩 실패")));
     }

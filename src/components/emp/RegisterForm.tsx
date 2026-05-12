@@ -26,7 +26,7 @@ const RegisterForm = () => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const onSubmit = (e: React.FormEvent) => {
+    const onSubmit = (e: React.SubmitEvent) => {
         e.preventDefault();
         dispatch(registerEmpRequest(form));
     };
@@ -60,34 +60,34 @@ const RegisterForm = () => {
 
                 {/* 직책 & 상사 */}
                 <div className={styles.inputGroup}>
-                    <label className={styles.label}>직책</label>
+                    <label className={styles.label}>직책 <span className={styles.required}>*</span></label>
                     <input name="job" placeholder="예: MANAGER, ANALYST" onChange={onChange} value={form.job} className={styles.mainInput} />
                 </div>
 
                 <div className={styles.inputGroup}>
-                    <label className={styles.label}>상사번호 (MGR)</label>
+                    <label className={styles.label}>상사번호</label>
                     <input name="mgr" placeholder="상사의 사원번호" onChange={onChange} value={form.mgr} className={styles.mainInput} />
                 </div>
 
                 {/* 급여 & 상여금 */}
                 <div className={styles.inputGroup}>
-                    <label className={styles.label}>급여 (SAL)</label>
+                    <label className={styles.label}>급여 <span className={styles.required}>*</span></label>
                     <input name="sal" type="number" placeholder="숫자만 입력" onChange={onChange} value={form.sal} className={styles.mainInput} />
                 </div>
 
                 <div className={styles.inputGroup}>
-                    <label className={styles.label}>상여금 (COMM)</label>
+                    <label className={styles.label}>상여금</label>
                     <input name="comm" type="number" placeholder="상여금 입력" onChange={onChange} value={form.comm} className={styles.mainInput} />
                 </div>
 
                 {/* 입사일 & 부서번호 */}
                 <div className={styles.inputGroup}>
-                    <label className={styles.label}>입사일</label>
+                    <label className={styles.label}>입사일 <span className={styles.required}>*</span></label>
                     <input name="hiredate" type="date" onChange={onChange} value={form.hiredate} className={styles.mainInput} />
                 </div>
 
                 <div className={styles.inputGroup}>
-                    <label className={styles.label}>부서번호</label>
+                    <label className={styles.label}>부서번호 <span className={styles.required}>*</span></label>
                     <input name="deptno" placeholder="예: 10, 20, 30" onChange={onChange} value={form.deptno} className={styles.mainInput} />
                 </div>
 

@@ -1,16 +1,46 @@
 "use client"
 
-import { fetchEmpDetailRequest, resetStatus, updateEmpRequest } from "@/features/emp/slice";
-import { AppDispatch, RootState } from "@/store/store";
-import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState, useMemo } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+    fetchEmpDetailRequest,
+    resetStatus,
+    updateEmpRequest
+} from "@/features/emp/slice";
+
+import {
+    AppDispatch,
+    RootState
+} from "@/store/store";
+
+import {
+    useParams,
+    useRouter
+} from "next/navigation";
+
+import {
+    useEffect,
+    useMemo,
+    useState
+} from "react";
+
+import {
+    shallowEqual,
+    useDispatch,
+    useSelector
+} from "react-redux";
+
 import Link from "next/link";
 import styles from './Emp.module.css';
 
-const ICON_COLORS = ['#f59e0b', '#ed4b9e', '#3b82f6', '#10b981', '#a855f7'];
+const ICON_COLORS = [
+    '#f59e0b',
+    '#ed4b9e',
+    '#3b82f6',
+    '#10b981',
+    '#a855f7'
+];
 
 const CuteEmpIcon = ({ color }: { color: string }) => (
+
     <svg
         width="38"
         height="38"
@@ -26,6 +56,7 @@ const CuteEmpIcon = ({ color }: { color: string }) => (
         <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
         <path d="M16 3.13a4 4 0 0 1 0 7.75" />
     </svg>
+
 );
 
 const UpdateForm = () => {
@@ -47,14 +78,17 @@ const UpdateForm = () => {
         deptno: ""
     });
 
-    // Redux 상태 가져오기
-    const { updateStatus, detail, fetchLoading } = useSelector((state: RootState) => ({
+    const {
+        updateStatus,
+        detail,
+        fetchLoading
+    } = useSelector((state: RootState) => ({
         detail: state.emp.detail,
         updateStatus: state.emp.updateStatus,
         fetchLoading: state.emp.detailStatus.loading
     }), shallowEqual);
 
-    // 상세 데이터 조회
+    // 상세 조회
     useEffect(() => {
 
         if (!empno) return;
@@ -63,7 +97,7 @@ const UpdateForm = () => {
 
     }, [empno, dispatch]);
 
-    // 조회된 데이터를 form에 반영
+    // form 세팅
     useEffect(() => {
 
         if (detail) {
@@ -74,7 +108,9 @@ const UpdateForm = () => {
                 job: detail.job || "",
                 mgr: String(detail.mgr ?? ""),
                 sal: String(detail.sal || ""),
-                hiredate: detail.hiredate || "",
+                hiredate: detail.hiredate
+                    ? detail.hiredate.substring(0, 10)
+                    : "",
                 comm: String(detail.comm ?? ""),
                 deptno: String(detail.deptno || "")
             });
@@ -83,7 +119,7 @@ const UpdateForm = () => {
 
     }, [detail]);
 
-    // 수정 성공 시 상세페이지 이동
+    // 수정 성공
     useEffect(() => {
 
         if (updateStatus.success) {
@@ -96,7 +132,7 @@ const UpdateForm = () => {
 
     }, [updateStatus.success, dispatch, router, empno]);
 
-    // 입력값 변경
+    // 입력 변경
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
         setForm({
@@ -106,23 +142,21 @@ const UpdateForm = () => {
 
     };
 
-    // 수정 요청
-    const onSubmit = (e: React.FormEvent) => {
+    // 저장
+    const onSubmit = (e: React.SubmitEvent) => {
 
         e.preventDefault();
 
-        if (empno) {
+        if (!empno) return;
 
-            dispatch(updateEmpRequest({
-                empno,
-                data: form
-            }));
-
-        }
+        dispatch(updateEmpRequest({
+            empno,
+            data: form
+        }));
 
     };
 
-    // 사원번호 기반 아이콘 컬러
+    // 아이콘 컬러
     const iconColor = useMemo(() => {
 
         if (!empno) return '#3b82f6';
@@ -151,7 +185,7 @@ const UpdateForm = () => {
 
             <div className={styles.detailCard}>
 
-                {/* 상단 프로필 영역 */}
+                {/* 상단 프로필 */}
                 <div className={styles.detailProfile}>
 
                     <div className={styles.detailAvatar}>
@@ -159,18 +193,20 @@ const UpdateForm = () => {
                     </div>
 
                     <div>
+
                         <h2 className={styles.detailName}>
-                            {form.ename || "사원"} 수정하기
+                            {form.ename || "사원"}
                         </h2>
 
                         <p className={styles.detailSubText}>
                             사원 정보를 수정해주세요
                         </p>
+
                     </div>
 
                 </div>
 
-                {/* 입력 폼 */}
+                {/* 수정 폼 */}
                 <form onSubmit={onSubmit}>
 
                     <div className={styles.detailInfoGroup}>
@@ -178,19 +214,15 @@ const UpdateForm = () => {
                         {/* 사원번호 */}
                         <div className={styles.detailItem}>
 
-                            <p className={styles.detailLabel}>사원번호</p>
+                            <p className={styles.detailLabel}>
+                                사원번호
+                            </p>
 
                             <input
-                                className={styles.detailValue}
+                                className={styles.detailInputDisabled}
                                 name="empno"
                                 value={form.empno}
                                 disabled
-                                style={{
-                                    border: 'none',
-                                    backgroundColor: '#f9fafb',
-                                    width: '100%',
-                                    outline: 'none'
-                                }}
                             />
 
                         </div>
@@ -198,20 +230,16 @@ const UpdateForm = () => {
                         {/* 사원이름 */}
                         <div className={styles.detailItem}>
 
-                            <p className={styles.detailLabel}>사원이름</p>
+                            <p className={styles.detailLabel}>
+                                사원이름
+                            </p>
 
                             <input
-                                className={styles.detailValue}
+                                className={styles.detailInput}
                                 name="ename"
-                                placeholder="사원 이름 입력"
-                                onChange={onChange}
                                 value={form.ename}
-                                style={{
-                                    width: '100%',
-                                    border: '1px solid #e5e7eb',
-                                    borderRadius: '4px',
-                                    padding: '4px 8px'
-                                }}
+                                onChange={onChange}
+                                placeholder="사원 이름 입력"
                             />
 
                         </div>
@@ -219,106 +247,16 @@ const UpdateForm = () => {
                         {/* 직책 */}
                         <div className={styles.detailItem}>
 
-                            <p className={styles.detailLabel}>직책</p>
+                            <p className={styles.detailLabel}>
+                                직책
+                            </p>
 
                             <input
-                                className={styles.detailValue}
+                                className={styles.detailInput}
                                 name="job"
-                                placeholder="직책 입력"
-                                onChange={onChange}
                                 value={form.job}
-                                style={{
-                                    width: '100%',
-                                    border: '1px solid #e5e7eb',
-                                    borderRadius: '4px',
-                                    padding: '4px 8px'
-                                }}
-                            />
-
-                        </div>
-
-                        {/* 급여 */}
-                        <div className={styles.detailItem}>
-
-                            <p className={styles.detailLabel}>급여</p>
-
-                            <input
-                                className={styles.detailValue}
-                                name="sal"
-                                type="number"
-                                placeholder="급여 입력"
                                 onChange={onChange}
-                                value={form.sal}
-                                style={{
-                                    width: '100%',
-                                    border: '1px solid #e5e7eb',
-                                    borderRadius: '4px',
-                                    padding: '4px 8px'
-                                }}
-                            />
-
-                        </div>
-
-                        {/* 상여금 */}
-                        <div className={styles.detailItem}>
-
-                            <p className={styles.detailLabel}>상여금</p>
-
-                            <input
-                                className={styles.detailValue}
-                                name="comm"
-                                type="number"
-                                placeholder="상여금 입력"
-                                onChange={onChange}
-                                value={form.comm}
-                                style={{
-                                    width: '100%',
-                                    border: '1px solid #e5e7eb',
-                                    borderRadius: '4px',
-                                    padding: '4px 8px'
-                                }}
-                            />
-
-                        </div>
-
-                        {/* 입사일 */}
-                        <div className={styles.detailItem}>
-
-                            <p className={styles.detailLabel}>입사일</p>
-
-                            <input
-                                className={styles.detailValue}
-                                name="hiredate"
-                                type="date"
-                                onChange={onChange}
-                                value={form.hiredate}
-                                style={{
-                                    width: '100%',
-                                    border: '1px solid #e5e7eb',
-                                    borderRadius: '4px',
-                                    padding: '4px 8px'
-                                }}
-                            />
-
-                        </div>
-
-                        {/* 부서번호 */}
-                        <div className={styles.detailItem}>
-
-                            <p className={styles.detailLabel}>부서번호</p>
-
-                            <input
-                                className={styles.detailValue}
-                                name="deptno"
-                                placeholder="부서번호 입력"
-                                onChange={onChange}
-                                value={form.deptno}
-                                style={{
-                                    width: '100%',
-                                    border: '1px solid #e5e7eb',
-                                    borderRadius: '4px',
-                                    padding: '4px 8px'
-                                }}
+                                placeholder="직책 입력"
                             />
 
                         </div>
@@ -326,20 +264,88 @@ const UpdateForm = () => {
                         {/* 상사번호 */}
                         <div className={styles.detailItem}>
 
-                            <p className={styles.detailLabel}>상사 사번</p>
+                            <p className={styles.detailLabel}>
+                                상사번호
+                            </p>
 
                             <input
-                                className={styles.detailValue}
+                                className={styles.detailInput}
                                 name="mgr"
-                                placeholder="상사 사번 입력"
-                                onChange={onChange}
+                                type="number"
                                 value={form.mgr}
-                                style={{
-                                    width: '100%',
-                                    border: '1px solid #e5e7eb',
-                                    borderRadius: '4px',
-                                    padding: '4px 8px'
-                                }}
+                                onChange={onChange}
+                                placeholder="상사번호 입력"
+                            />
+
+                        </div>
+
+                        {/* 급여 */}
+                        <div className={styles.detailItem}>
+
+                            <p className={styles.detailLabel}>
+                                급여
+                            </p>
+
+                            <input
+                                className={styles.detailInput}
+                                name="sal"
+                                type="number"
+                                value={form.sal}
+                                onChange={onChange}
+                                placeholder="급여 입력"
+                            />
+
+                        </div>
+
+                        {/* 상여금 */}
+                        <div className={styles.detailItem}>
+
+                            <p className={styles.detailLabel}>
+                                상여금
+                            </p>
+
+                            <input
+                                className={styles.detailInput}
+                                name="comm"
+                                type="number"
+                                value={form.comm}
+                                onChange={onChange}
+                                placeholder="상여금 입력"
+                            />
+
+                        </div>
+
+                        {/* 입사일 */}
+                        <div className={styles.detailItem}>
+
+                            <p className={styles.detailLabel}>
+                                입사일
+                            </p>
+
+                            <input
+                                className={styles.detailInput}
+                                name="hiredate"
+                                type="date"
+                                value={form.hiredate}
+                                onChange={onChange}
+                            />
+
+                        </div>
+
+                        {/* 부서번호 */}
+                        <div className={styles.detailItem}>
+
+                            <p className={styles.detailLabel}>
+                                부서번호
+                            </p>
+
+                            <input
+                                className={styles.detailInput}
+                                name="deptno"
+                                type="number"
+                                value={form.deptno}
+                                onChange={onChange}
+                                placeholder="부서번호 입력"
                             />
 
                         </div>
@@ -354,7 +360,9 @@ const UpdateForm = () => {
                             className={styles.detailPrimaryBtn}
                             disabled={updateStatus.loading}
                         >
-                            {updateStatus.loading ? "저장 중..." : "저장하기"}
+                            {updateStatus.loading
+                                ? "저장 중..."
+                                : "저장하기"}
                         </button>
 
                         <Link href={`/emp/${empno}`}>
@@ -370,17 +378,10 @@ const UpdateForm = () => {
 
                     </div>
 
-                    {/* 에러 메시지 */}
+                    {/* 에러 */}
                     {updateStatus.error && (
 
-                        <p
-                            style={{
-                                color: '#ef4444',
-                                fontSize: '0.875rem',
-                                marginTop: '1rem',
-                                textAlign: 'center'
-                            }}
-                        >
+                        <p className={styles.detailError}>
                             {updateStatus.error}
                         </p>
 

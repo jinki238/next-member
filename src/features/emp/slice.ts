@@ -27,7 +27,6 @@ const empSlice=createSlice({
         fetchEmpFailure:(state,action:PayloadAction<string>)=>{
             state.listStatus={...initialStatus,loading:false,error:action.payload};
         },
-
         // 상세조회
         fetchEmpDetailRequest:(state,action:PayloadAction<string>)=>{
             state.detailStatus={...initialStatus,loading:true};
