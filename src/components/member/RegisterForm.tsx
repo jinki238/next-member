@@ -33,6 +33,9 @@ const RegisterForm = () => {
         <div className={styles.formCard}>
             <h2 className={styles.formTitle}>회원가입</h2>
             <form onSubmit={onSubmit} className={styles.formBody}>
+                <h3 className={styles.sectionTitle}>회원 정보 입력</h3>
+                    
+                
                 {/* 아이디 */}
                 <div className={styles.inputGroup}>
                     <label className={styles.label}>아이디 <span className={styles.required}>*</span></label>

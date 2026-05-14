@@ -38,14 +38,14 @@
     top: 50%;
     transform: translateY(-50%);
     font-size: 14px;
-    color: #9ca3af;
+    color: #747c8a;
 }
 
 .searchInput {
     width: 100%;
     height: 52px;
     padding: 0 16px 0 42px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #4278e4;
     border-radius: 14px;
     font-size: 15px;
     outline: none;
@@ -88,10 +88,7 @@
     color: #4b5563;
 }
 
-.headerMemberInfo {
-    text-align: center;
-}
-
+.headerMemberInfo,
 .headerAction {
     text-align: center;
 }
@@ -105,7 +102,7 @@
     grid-template-columns: 1fr 1fr;
     align-items: center;
     padding: 24px 28px;
-    border-bottom: 1px solid #f3f4f6;
+    border-bottom: 1px solid #c4d6fa;
 }
 
 /* =========================
@@ -161,7 +158,6 @@
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 .btnDetail:hover {
@@ -177,7 +173,6 @@
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 .btnDelete:hover {
@@ -213,7 +208,6 @@
     border-radius: 8px;
     background: white;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 .paginationBtn:hover {
@@ -240,16 +234,25 @@
 ========================= */
 
 .detailContainer {
-    padding: 32px;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f8fafc;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 .detailCard {
-    background: white;
-    border: 1px solid #e5e7eb;
+    width: 100%;
+    max-width: 900px;
+    background: #ffffff;
+    border: 2px solid #b1c4eb;
     border-radius: 24px;
-    padding: 40px;
-    max-width: 1000px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    padding: 50px;
+    box-shadow: 0 10px 25px rgba(177, 196, 235, 0.2);
+    box-sizing: border-box;
 }
 
 .detailProfile {
@@ -260,25 +263,26 @@
 }
 
 .detailAvatar {
-    width: 80px;
-    height: 80px;
+    width: 84px;
+    height: 84px;
     border-radius: 9999px;
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
+    background: #f8fafc;
+    border: 2px solid #b1c4eb;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .detailName {
-    font-size: 28px;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 800;
+    color: #111827;
     margin-bottom: 6px;
 }
 
 .detailSubText {
-    color: #9ca3af;
     font-size: 14px;
+    color: #6b7280;
 }
 
 .detailInfoGroup {
@@ -290,40 +294,43 @@
 .detailItem {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
 }
 
 .detailLabel {
-    font-size: 14px;
-    color: #9ca3af;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 700;
+    color: #111827;
 }
 
 .detailValue {
-    border: 1px solid #e5e7eb;
-    background: #f9fafb;
-    border-radius: 14px;
-    padding: 16px 20px;
-    font-size: 16px;
+    min-height: 54px;
+    padding: 16px 18px;
+    border: 1.5px solid #b1c4eb;
+    border-radius: 12px;
+    background: #ffffff;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
 }
 
 .detailBtnArea {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
     margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
 }
 
 .detailPrimaryBtn {
+    min-width: 140px;
+    height: 52px;
     border: none;
+    border-radius: 12px;
     background: #2563eb;
     color: white;
-    padding: 14px 24px;
-    border-radius: 14px;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 .detailPrimaryBtn:hover {
@@ -331,18 +338,19 @@
 }
 
 .detailSecondaryBtn {
-    border: 1px solid #d1d5db;
+    min-width: 140px;
+    height: 52px;
+    border: 1.5px solid #b1c4eb;
+    border-radius: 12px;
     background: white;
-    padding: 14px 24px;
-    border-radius: 14px;
+    color: #2563eb;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 .detailSecondaryBtn:hover {
-    background: #f3f4f6;
+    background: #f1f5ff;
 }
 
 /* =========================
@@ -351,30 +359,27 @@
 
 .detailInput {
     width: 100%;
-    border: 1px solid #e5e7eb;
-    background: #f9fafb;
-    border-radius: 14px;
-    padding: 16px 20px;
-    font-size: 16px;
-    transition: 0.2s;
+    border: 1.5px solid #b1c4eb;
+    background: white;
+    border-radius: 12px;
+    padding: 16px 18px;
+    font-size: 15px;
     outline: none;
 }
 
 .detailInput:focus {
     border-color: #2563eb;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
 }
 
 .detailInputDisabled {
     width: 100%;
-    border: 1px solid #e5e7eb;
+    border: 1.5px solid #d1d5db;
     background: #f3f4f6;
-    border-radius: 14px;
-    padding: 16px 20px;
-    font-size: 16px;
+    border-radius: 12px;
+    padding: 16px 18px;
+    font-size: 15px;
     color: #6b7280;
-    outline: none;
 }
 
 .detailError {
@@ -382,5 +387,5 @@
     text-align: center;
     color: #ef4444;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
 }

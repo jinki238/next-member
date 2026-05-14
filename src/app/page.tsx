@@ -12,14 +12,12 @@ const Homepage = () => {
         "컴포넌트 기반 UI 개발",
         "빠른 렌더링과 효율적 업데이트",
         "재사용 가능한 컴포넌트 구조",
-        "풍부한 생태계와 커뮤니티",
       ],
       roadmap: [
         "JSX 문법 이해",
         "컴포넌트와 Props",
         "State와 이벤트 처리",
         "컴포넌트 생명주기",
-        "Hooks 기초",
       ],
     },
     {
@@ -32,14 +30,12 @@ const Homepage = () => {
         "서버 사이드 렌더링 (SSR)",
         "검색 엔진 최적화 (SEO)",
         "API 라우트 및 파일 기반 라우팅",
-        "자동 코드 분할 및 최적화",
       ],
       roadmap: [
         "페이지 및 라우팅",
         "서버 사이드 렌더링",
         "API Routes",
         "데이터 패칭",
-        "배포하기",
       ],
     },
     {
@@ -52,14 +48,12 @@ const Homepage = () => {
         "중앙 집중식 상태 관리",
         "예측 가능한 상태 변경",
         "상태 변화에 따른 UI 업데이트",
-        "미들웨어를 통한 확장성",
       ],
       roadmap: [
         "Store, Action, Reducer",
         "상태 조회 및 변경",
         "React-Redux 연동",
         "미들웨어 (Saga, Thunk)",
-        "비동기 상태 관리",
       ],
     },
   ];
@@ -73,38 +67,66 @@ const Homepage = () => {
         padding: "40px",
       }}
     >
-      {/* 메인 컨텐츠 */}
       <main style={{ maxWidth: "1400px", margin: "0 auto" }}>
         {/* 헤더 */}
-        <div style={{ marginBottom: "40px" }}>
-          <h1
-            style={{
-              fontSize: "64px",
-              fontWeight: "900",
-              marginBottom: "12px",
-              color: "#0f172a",
-              lineHeight: "1.1",
-            }}
-          >
-            Mastering the Core
-          </h1>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: "30px",
+            marginBottom: "40px",
+          }}
+        >
+          {/* 왼쪽 텍스트 */}
+          <div style={{ flex: 1 }}>
+            <h1
+              style={{
+                fontSize: "64px",
+                fontWeight: "900",
+                marginBottom: "12px",
+                color: "#0f172a",
+                lineHeight: "1.1",
+              }}
+            >
+              Mastering the Core
+            </h1>
 
-          <div
-            style={{
-              fontSize: "58px",
-              fontWeight: "900",
-              marginBottom: "20px",
-            }}
-          >
-            <span style={{ color: "#2563eb" }}>React</span>{" "}
-            <span style={{ color: "#7c3aed" }}>· Next.js</span>{" "}
-            <span style={{ color: "#ff2d7a" }}>· Redux</span>
+            <div
+              style={{
+                fontSize: "58px",
+                fontWeight: "900",
+                marginBottom: "20px",
+              }}
+            >
+              <span style={{ color: "#2563eb" }}>React</span>{" "}
+              <span style={{ color: "#7c3aed" }}>· Next.js</span>{" "}
+              <span style={{ color: "#ff2d7a" }}>· Redux</span>
+            </div>
+
+            <p style={{ fontSize: "20px", color: "#475569" }}>
+              각 기술의 특징과 역할을 이해하고, 함께 탄탄한 웹 애플리케이션을
+              만들어보세요.
+            </p>
           </div>
 
-          <p style={{ fontSize: "20px", color: "#475569" }}>
-            각 기술의 특징과 역할을 이해하고, 함께 탄탄한 웹 애플리케이션을
-            만들어보세요.
-          </p>
+          {/* 오른쪽 이미지 */}
+          <div style={{ width: "550px" }}>
+            <img
+              src="/tech.png"
+              alt="tech"
+              style={{
+                width: "100%",
+                objectFit: "contain",
+                border: "none",
+                boxShadow: "none",
+                background: "transparent",
+                mixBlendMode: "darken",
+                opacity: 0.96,
+                filter: "brightness(1.03) contrast(1.02)"
+              }}
+            />
+          </div>
         </div>
 
         {/* 기술 카드 */}
@@ -220,32 +242,6 @@ const Homepage = () => {
               ))}
             </div>
           ))}
-        </div>
-
-        {/* 하단 멘트 */}
-        <div
-          style={{
-            marginTop: "30px",
-            background: "#ffffff",
-            borderRadius: "24px",
-            padding: "30px",
-            border: "2px solid #cbd5e1",
-            fontSize: "26px",
-            fontWeight: "800",
-            color: "#111827",
-          }}
-        >
-          💬 작은 꾸준함이 큰 성장을 만듭니다.
-          <div
-            style={{
-              marginTop: "10px",
-              fontSize: "18px",
-              color: "#64748b",
-              fontWeight: "500",
-            }}
-          >
-            오늘의 학습이 내일의 당신을 만듭니다.
-          </div>
         </div>
       </main>
     </div>

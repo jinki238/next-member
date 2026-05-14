@@ -1,118 +1,180 @@
-/* 1. 전체 카드 스타일 */
+/* =========================
+   전체 카드 스타일
+========================= */
 .fullContainer {
     width: 100%;
-    min-height: 100vh; /* 화면 높이를 꽉 채우고 싶을 때 */
-    background-color: #ffffff;
-    padding: 40px; /* 양옆 여백은 적절히 조절 */
+    min-height: 100vh;
+    background-color: #f8fafc;
+    padding: 40px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* 세로 가운데 */
+    align-items: center;       /* 가로 가운데 */
 }
 
+/* =========================
+   제목
+========================= */
 .formTitle {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 800;
-    margin-bottom: 30px;
-    color: #111;
+    margin-bottom: 40px;
+    color: #000000;
+    text-align: center;
 }
 
+/* =========================
+   메인 카드 박스
+========================= */
 .formBody {
+    width: 650px;
+    background: #ffffff;
+    border: 2px solid #b1c4eb;
+    border-radius: 24px;
+    padding: 50px;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* 각 입력 세트 사이 간격 */
+    gap: 25px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 25px rgba(177, 196, 235, 0.2);
+
+    margin: 0 auto;   /* 전체 박스 가운데 */
 }
 
-/* 2. 입력 세트 레이아웃 */
+/* 회원 정보 입력 제목 */
+.sectionTitle {
+    width: 100%;
+    max-width: 500px;     /* 입력칸 시작점과 맞춤 */
+    margin: 0 auto 10px auto;
+    font-size: 22px;
+    font-weight: 800;
+    color: #000000;
+    text-align: left;
+}
+
+
+/* =========================
+   입력 세트
+========================= */
 .inputGroup {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 8px; /* 라벨과 입력창 사이 간격 */
+    gap: 10px;
+    align-items: center;
 }
 
-/* 3. 라벨 및 필수 표시(*) 스타일 */
+/* =========================
+   라벨
+========================= */
 .label {
+    width: 500px;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 700;
     color: #374151;
+    text-align: left;
 }
 
 .required {
-    color: #ef4444; /* 빨간색 필수 표시 */
-    margin-left: 2px;
+    color: #ff0000;
+    margin-left: 4px;
 }
 
-/* 4. 메인 입력창 스타일 */
+/* =========================
+   입력창
+========================= */
 .mainInput {
-    width: 100%;
+    width: 500px;
+    height: 52px;
     padding: 12px 15px;
-    border: 1.5px solid #e5e7eb; /* 연한 회색 테두리 */
-    border-radius: 12px; /* 둥근 입력창 */
+    border: 1.5px solid #b1c4eb;
+    border-radius: 12px;
     font-size: 15px;
     color: #333;
-    outline: none; /* 포커스 시 기본 테두리 제거 */
-    transition: border-color 0.2s;
+    outline: none;
+    box-sizing: border-box;
+
+    display: block;
+    margin: 0 auto;
 }
 
 .mainInput::placeholder {
-    color: #9ca3af; /* 플레이스홀더 색상 */
+    color: #9ca3af;
 }
 
-/* 입력창 포커스 시 파란색 테두리 효과 */
 .mainInput:focus {
     border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
 }
 
-/* 주소 상세 입력창 여백 (기본 주소창 바로 아래 배치 시) */
+/* 주소 상세 */
 .addressDetail {
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
-/* 5. 입력창 + 서브 버튼 레이아웃 */
+/* =========================
+   입력창 + 버튼
+========================= */
 .inputWithButton {
+    width: 500px;
     display: flex;
-    gap: 10px; /* 입력창과 버튼 사이 간격 */
+    gap: 10px;
+    margin: 0 auto;
 }
 
-/* 입력창이 버튼 공간을 제외하고 꽉 차게 함 */
 .inputWithButton .mainInput {
     flex: 1;
+    width: auto;
+    margin: 0;
 }
 
-/* 6. 서브 버튼 스타일 (중복확인, 주소검색) */
+/* =========================
+   서브 버튼
+========================= */
 .subButton {
+    height: 52px;
     padding: 0 20px;
-    background-color: white;
-    border: 1px solid #d1d5db;
-    color: #374151; /* 진한 회색 글자 */
+    background: white;
+    border: 1px solid #b1c4eb;
+    color: #2563eb;
     border-radius: 10px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.2s;
-    white-space: nowrap; /* 글자가 줄바꿈되지 않게 */
+    white-space: nowrap;
 }
 
 .subButton:hover {
-    background-color: #f9fafb;
+    background: #f9fafb;
 }
 
-/* 7. 우측 하단 제출 영역 */
+/* =========================
+   제출 버튼 영역
+========================= */
 .submitArea {
+    width: 100%;
     display: flex;
-    justify-content: flex-end; /* 우측 정렬 */
+    justify-content: center;
     margin-top: 20px;
 }
 
-/* 8. 메인 버튼 스타일 (가입하기) */
+/* =========================
+   가입하기 버튼
+========================= */
 .mainButton {
-    padding: 12px 24px;
-    background-color: #2563eb; /* 선명한 파란색 배경 */
+    width: 500px;
+    height: 54px;
+    background: #2563eb;
     color: white;
     border: none;
     border-radius: 10px;
     font-weight: 700;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.2s;
 }
 
 .mainButton:hover {
-    background-color: #1d4ed8;
+    background: #1d4ed8;
 }

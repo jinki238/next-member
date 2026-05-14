@@ -37,6 +37,7 @@ const RegisterForm = () => {
         <div className={styles.formCard}>
             <h2 className={styles.formTitle}>사원 등록</h2>
             <form onSubmit={onSubmit} className={styles.formBody}>  
+                <h3 className={styles.sectionTitle}>사원 정보 입력</h3>
                 {/* 사원번호 & 이름 (2단 구성 예시) */}
                 <div className={styles.inputGroup}>
                     <label className={styles.label}>사원번호 <span className={styles.required}>*</span></label>

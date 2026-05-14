@@ -1,114 +1,160 @@
-/* 1. 전체 카드 스타일 */
+/* 1. 전체 컨테이너 */
 .fullContainer {
     width: 100%;
-    min-height: 100vh; /* 화면 높이를 꽉 채우고 싶을 때 */
-    background-color: #ffffff;
-    padding: 40px; /* 양옆 여백은 적절히 조절 */
-}
-
-.formTitle {
-    font-size: 24px;
-    font-weight: 800;
-    margin-bottom: 30px;
-    color: #111;
-}
-
-.formBody {
+    min-height: 100vh;
+    background-color: #f8fafc;
+    padding: 60px 20px;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* 각 입력 세트 사이 간격 */
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
-/* 2. 입력 세트 레이아웃 */
+/* 2. 제목 */
+.formTitle {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 40px;
+    color: #000000;
+    text-align: center;
+}
+
+/* 3. 메인 박스 */
+.formBody {
+    width: 100%;
+    max-width: 650px;
+    background-color: #ffffff;
+    border: 2px solid #b1c4eb;
+    border-radius: 24px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    box-shadow: 0 10px 25px rgba(177, 196, 235, 0.2);
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+/* 회원 정보 입력 제목 */
+.sectionTitle {
+    width: 100%;
+    max-width: 500px;     /* 입력칸 시작점과 맞춤 */
+    margin: 0 auto 10px auto;
+    font-size: 22px;
+    font-weight: 800;
+    color: #000000;
+    text-align: left;
+}
+
+/* 4. 입력 세트 */
 .inputGroup {
     display: flex;
     flex-direction: column;
-    gap: 8px; /* 라벨과 입력창 사이 간격 */
+    gap: 10px;
+    align-items: center;
+    width: 100%;
 }
 
-/* 3. 라벨 및 필수 표시(*) 스타일 */
+/* 라벨 */
 .label {
+    width: 100%;
+    max-width: 500px;   /* 입력칸과 라벨 위치 맞춤 */
+    margin: 0 auto;
     font-size: 15px;
-    font-weight: 600;
-    color: #374151;
+    font-weight: 700;
+    color: #000000;
+    display: flex;
+    align-items: center;
 }
 
 .required {
-    color: #ef4444; /* 빨간색 필수 표시 */
-    margin-left: 2px;
+    color: #ff0000;
+    margin-left: 4px;
 }
 
-/* 4. 메인 입력창 스타일 */
+/* 입력창 */
 .mainInput {
     width: 100%;
-    padding: 12px 15px;
-    border: 1.5px solid #e5e7eb; /* 연한 회색 테두리 */
-    border-radius: 12px; /* 둥근 입력창 */
+    max-width: 500px;
+    height: 52px;       /* 높이 통일 */
+    padding: 14px 18px;
+    border: 1.5px solid #b1c4eb;
+    border-radius: 12px;
     font-size: 15px;
-    color: #333;
-    outline: none; /* 포커스 시 기본 테두리 제거 */
-    transition: border-color 0.2s;
+    color: #000000;
+    outline: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
 }
 
 .mainInput::placeholder {
-    color: #9ca3af; /* 플레이스홀더 색상 */
+    color: #94a3b8;
 }
 
-/* 입력창 포커스 시 파란색 테두리 효과 */
 .mainInput:focus {
-    border-color: #3b82f6;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-/* 주소 상세 입력창 여백 (기본 주소창 바로 아래 배치 시) */
 .addressDetail {
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
-/* 5. 입력창 + 서브 버튼 레이아웃 */
+/* 입력창 + 버튼 */
 .inputWithButton {
     display: flex;
-    gap: 10px; /* 입력창과 버튼 사이 간격 */
+    gap: 12px;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    max-width: 500px;   /* 입력칸 그룹 전체 폭 맞춤 */
+    margin: 0 auto;
 }
 
-/* 입력창이 버튼 공간을 제외하고 꽉 차게 함 */
 .inputWithButton .mainInput {
     flex: 1;
+    max-width: none;
 }
 
-/* 6. 서브 버튼 스타일 (중복확인, 주소검색) */
+/* 서브 버튼 */
 .subButton {
-    padding: 0 20px;
-    background-color: white;
-    border: 1px solid #d1d5db;
-    color: #374151; /* 진한 회색 글자 */
-    border-radius: 10px;
-    font-weight: 600;
+    height: 52px;       /* 입력창 높이와 맞춤 */
+    padding: 0 24px;
+    background-color: #ffffff;
+    border: 1.5px solid #b1c4eb;
+    color: #2563eb;
+    border-radius: 12px;
+    font-weight: 700;
     font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.2s;
-    white-space: nowrap; /* 글자가 줄바꿈되지 않게 */
+    transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .subButton:hover {
-    background-color: #f9fafb;
+    background-color: #f1f5ff;
+    border-color: #2563eb;
 }
 
-/* 7. 우측 하단 제출 영역 */
+/* 제출 버튼 */
 .submitArea {
+    margin-top: 15px;
     display: flex;
-    justify-content: flex-end; /* 우측 정렬 */
-    margin-top: 20px;
+    justify-content: center;
 }
 
-/* 8. 메인 버튼 스타일 (가입하기) */
 .mainButton {
-    padding: 12px 24px;
-    background-color: #2563eb; /* 선명한 파란색 배경 */
-    color: white;
+    width: 100%;
+    max-width: 500px;
+    height: 54px;
+    padding: 16px;
+    background-color: #2563eb;
+    color: #ffffff;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 17px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
